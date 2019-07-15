@@ -12,29 +12,29 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 class ExpenseServiceTest {
     @Test
     void should_return_internal_expense_type_if_project_is_internal() throws UnexpectedProjectTypeException {
-        // given
         Project project = new Project(ProjectType.INTERNAL,"Project A");
-        // when
+
         ExpenseType type = ExpenseService.getExpenseCodeByProjectTypeAndName(project);
-        // then
+
         assertThat(type).isEqualTo(ExpenseType.INTERNAL_PROJECT_EXPENSE);
     }
 
     @Test
     void should_return_expense_type_A_if_project_is_external_and_name_is_project_A() throws UnexpectedProjectTypeException {
-        // given
         Project project = new Project(ProjectType.EXTERNAL,"Project A");
-        // when
+
         ExpenseType type = ExpenseService.getExpenseCodeByProjectTypeAndName(project);
-        // then
+
         assertThat(type).isEqualTo(ExpenseType.EXPENSE_TYPE_A);
     }
 
     @Test
     void should_return_expense_type_B_if_project_is_external_and_name_is_project_B() throws UnexpectedProjectTypeException {
-        // given
-        // when
-        // then
+        Project project = new Project(ProjectType.EXTERNAL,"Project B");
+
+        ExpenseType type = ExpenseService.getExpenseCodeByProjectTypeAndName(project);
+
+        assertThat(type).isEqualTo(ExpenseType.EXPENSE_TYPE_B);
     }
 
     @Test
